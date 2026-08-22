@@ -1,0 +1,40 @@
+name: build_and_test
+permissions:
+      contents: read
+on:
+    [pull_request]
+
+defaults:
+    run:
+        shell: bash
+    
+jobs:
+    build:
+        strategy:
+            matrix:
+                os:
+                    - ubuntu-24.04
+                    - ubuntu-24.04-arm
+        runs-on: ${{ matrix.os }}
+        container:
+            image: rostooling/setup-ros-docker:ubuntu-resolute-ros-lyrical-ros-base-latest
+        steps:
+            - name: apt dependencies
+              run: |
+                apt install -y git-lfs python3-colcon-lcov-result python3-colcon-coveragepy-result python3-colcon-cd
+            - uses: ros-tooling/action-ros-ci@3a640b10f09b756dabe556dac5413aba369f71b0 # v0.4.8
+              id: action_ros_ci_step
+              with:
+                package-name: >
+                    trimble_driver
+                    trimble_gsof_msgs
+                    trimble_interfaces
+                target-ros2-distro: lyrical
+                import-token: ${{ secrets.GITHUB_TOKEN }}
+            - name: Run extra pcap tests
+              run: |
+                source /etc/profile.d/colcon_cd.sh
+                source $GITHUB_WORKSPACE/${{ steps.action_ros_ci_step.outputs.ros-workspace-directory-name }}/install/setup.bash
+                colcon_cd trimble_driver
+                cd test/data
+                $GITHUB_WORKSPACE/${{ steps.action_ros_ci_step.outputs.ros-workspace-directory-name }}/build/trimble_driver/bin/trimble_driver_pcap_test 
