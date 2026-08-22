@@ -1,3 +1,29 @@
+## trimble_driver (lyrical) - 0.2.0-2
+
+The packages in the `trimble_driver` repository were released into the `lyrical` distro by running `/home/anguyen/Documents/trimble_driver_ros-release/.venv/bin/bloom-release --new-track --rosdistro lyrical --track lyrical trimble_driver` on `Sat, 22 Aug 2026 19:42:23 -0000`
+
+These packages were released:
+- `trimble_driver`
+- `trimble_gsof_msgs`
+- `trimble_interfaces`
+
+Version of package(s) in repository `trimble_driver`:
+
+- upstream repository: https://github.com/trimble-oss/trimble_driver_ros.git
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `0.2.0-1`
+- new version: `0.2.0-2`
+
+Versions of tools used:
+
+- bloom version: `0.14.3`
+- catkin_pkg version: `1.1.0`
+- rosdep version: `0.26.0`
+- rosdistro version: `1.0.1`
+- vcstools version: `0.1.42`
+
+
 ## trimble_driver (lyrical) - 0.2.0-1
 
 The packages in the `trimble_driver` repository were released into the `lyrical` distro by running `/home/anguyen/Documents/trimble_driver_ros-release/.venv/bin/bloom-release --new-track --rosdistro lyrical --track lyrical trimble_driver` on `Sat, 22 Aug 2026 19:37:48 -0000`
