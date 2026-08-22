@@ -1,3 +1,0 @@
-std_msgs/Header header
-uint16 battery_capacity
-float64 remaining_data_logging_time
