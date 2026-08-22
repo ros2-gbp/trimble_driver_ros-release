@@ -1,0 +1,46 @@
+name: build_and_test
+permissions:
+      contents: read
+on:
+    [pull_request]
+
+defaults:
+    run:
+        shell: bash
+    
+jobs:
+    build:
+        strategy:
+            matrix:
+                os:
+                    - ubuntu-latest
+                    - ubuntu-22.04-arm
+        runs-on: ${{ matrix.os }}
+        container:
+            image: rostooling/setup-ros-docker:ubuntu-noble-latest
+        steps:
+            - name: Git LFS
+              run: |
+                apt update && apt install -y curl
+                curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
+                apt install git-lfs
+                git lfs install
+            - name: Extra colcon extensions
+              run: |
+                apt install -y python3-colcon-lcov-result python3-colcon-coveragepy-result python3-colcon-cd
+            - uses: ros-tooling/action-ros-ci@9125cf1fa1f87e7830ed1c77f8b1885ee649b9a0 # 0.4.6
+              id: action_ros_ci_step
+              with:
+                package-name: >
+                    trimble_driver
+                    trimble_gsof_msgs
+                    trimble_interfaces
+                target-ros2-distro: jazzy
+                import-token: ${{ secrets.GITHUB_TOKEN }}
+            - name: Run extra pcap tests
+              run: |
+                source /usr/share/colcon_cd/function/colcon_cd.sh
+                source $GITHUB_WORKSPACE/${{ steps.action_ros_ci_step.outputs.ros-workspace-directory-name }}/install/setup.bash
+                colcon_cd trimble_driver
+                cd test/data
+                $GITHUB_WORKSPACE/${{ steps.action_ros_ci_step.outputs.ros-workspace-directory-name }}/build/trimble_driver/bin/trimble_driver_pcap_test 
