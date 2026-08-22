@@ -1,6 +1,0 @@
-std_msgs/Header header
-GpsTime gps_time
-uint8 number_space_vehicles_used
-uint8 position_flags_1
-uint8 position_flags_2
-uint8 init_num

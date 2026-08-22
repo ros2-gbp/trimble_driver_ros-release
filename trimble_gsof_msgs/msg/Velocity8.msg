@@ -1,6 +1,0 @@
-std_msgs/Header header
-uint8 velocity_flags
-float32 velocity
-float32 heading
-float32 vertical_velocity
-float32 local_heading
