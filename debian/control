@@ -1,0 +1,12 @@
+Source: ros-lyrical-trimble-driver
+Section: misc
+Priority: optional
+Maintainer: "Andre Nguyen" <andre_nguyen@trimble.com>
+Build-Depends: debhelper (>= 9.0.0), libboost-all-dev, libgeographiclib-dev, libpcap0.8-dev, ros-lyrical-ament-cmake-gtest <!nocheck>, ros-lyrical-ament-cmake-ros, ros-lyrical-diagnostic-msgs, ros-lyrical-geometry-msgs, ros-lyrical-launch-testing <!nocheck>, ros-lyrical-nav-msgs, ros-lyrical-rclcpp, ros-lyrical-rclcpp-components, ros-lyrical-sensor-msgs, ros-lyrical-std-msgs, ros-lyrical-std-srvs, ros-lyrical-tf2, ros-lyrical-tf2-geometry-msgs, ros-lyrical-tf2-ros, ros-lyrical-trimble-gsof-msgs, ros-lyrical-trimble-interfaces, ros-lyrical-ros-workspace
+Homepage: https://index.ros.org/p/trimble_driver/#lyrical
+Standards-Version: 3.9.2
+
+Package: ros-lyrical-trimble-driver
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libboost-all-dev, libgeographiclib-dev, libpcap0.8-dev, ros-lyrical-diagnostic-msgs, ros-lyrical-geometry-msgs, ros-lyrical-nav-msgs, ros-lyrical-rclcpp, ros-lyrical-rclcpp-components, ros-lyrical-sensor-msgs, ros-lyrical-std-msgs, ros-lyrical-std-srvs, ros-lyrical-tf2, ros-lyrical-tf2-geometry-msgs, ros-lyrical-tf2-ros, ros-lyrical-trimble-gsof-msgs, ros-lyrical-trimble-interfaces, ros-lyrical-ros-workspace
+Description: Connect Trimble products publishing GSOF data to ROS.
