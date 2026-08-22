@@ -1,0 +1,8 @@
+ros-jazzy-trimble-gsof-msgs (0.1.1-1noble) noble; urgency=high
+
+  * refactor: rename gsof_msgs to trimble_gsof_msgs
+  * Contributors: Andre Nguyen
+
+ -- "Andre Nguyen" <andre_nguyen@trimble.com>  Fri, 21 Aug 2026 04:00:00 -0000
+
+
